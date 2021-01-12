@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Toutoulist</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css">
+
+    </head>
+
+    <body>
+
+        <div class="wrapper">
+
+            <h1>Toutoulist</h1>
+
+            <ul>
+                <li>
+                    <div>
+                        <p class="task">Amener Daniel au parc à 9h</p>
+                        <div class="etat">
+                            <p>A faire</p>
+                            <img src="assets/tick.svg" alt="tick">
+                            <button class="update">Modifier</button>
+                            <button class="delete">Supprimer</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <p class="task">Prendre Raphy sur la route</p>
+                        <div class="etat">
+                            <p>A faire</p>
+                            <img src="assets/tick.svg" alt="tick">
+                            <button class="update">Modifier</button>
+                            <button class="delete">Supprimer</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <p class="task">Daniel doit se baigner dans le lac</p>
+                        <div class="etat">
+                            <p>A faire</p>
+                            <img src="assets/tick.svg" alt="tick">
+                            <button class="update">Modifier</button>
+                            <button class="delete">Supprimer</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <p class="task">Brosser Daniel</p>
+                        <div class="etat">
+                            <p>A faire</p>
+                            <img src="assets/tick.svg" alt="tick">
+                            <button class="update">Modifier</button>
+                            <button class="delete">Supprimer</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <p class="task">Donner le traitement à Daniel</p>
+                        <div class="etat">
+                            <p>A faire</p>
+                            <img src="assets/tick.svg" alt="tick">
+                            <button class="update">Modifier</button>
+                            <button class="delete">Supprimer</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="addTool">
+                <input type="text">
+                <button id="ajouter">Ajouter</button>
+            </div>
+
+            <div class="viewTool">
+                <button id="view">Voir les données</button>
+            </div>
+
+            <div id="modal">
+                <div class="content"></div>
+            </div>
+
+        </div>
+
+        <script src="js/app.js"></script>
+        
+    </body>
+
+</html>
