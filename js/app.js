@@ -8,7 +8,7 @@ document.querySelector('.addTool #ajouter').addEventListener('click', () => {
 
     if(input) {
         const li = document.createElement('li');
-        li.innerHTML =  `<div>
+        li.innerHTML =  `<div class="taskDiv">
                             <p class="task">${input}</p>
                             <div class="etat">
                                 <p>A faire</p>
@@ -21,6 +21,7 @@ document.querySelector('.addTool #ajouter').addEventListener('click', () => {
         document.querySelector('input').value = '';
         deleteEvent();
         updateEvent();
+        updateState();
     }
 
 });
@@ -28,15 +29,21 @@ document.querySelector('.addTool #ajouter').addEventListener('click', () => {
 
 // Modifier l'état d'une tache -------------------------------------------------------------------------------------------------------------
 
-var ticks = document.querySelectorAll('img');
+function updateState() {
 
-ticks.forEach(tick => {
-    tick.addEventListener('click', (e) => {
-        var div = e.path[1];
-        div.querySelector('p').innerHTML = `Fait`;
-        div.querySelector('img').style.display = 'none';
+    var ticks = document.querySelectorAll('img');
+
+    ticks.forEach(tick => {
+        tick.addEventListener('click', (e) => {
+            var div = e.path[1];
+            div.querySelector('p').innerHTML = `Fait`;
+            div.querySelector('img').remove();
+        });
     });
-});
+
+}
+
+updateState();
 
 
 // Supprimer une tache -------------------------------------------------------------------------------------------------------------
@@ -46,8 +53,8 @@ function deleteEvent() {
     var deletes = document.querySelectorAll('.delete');
 
         deletes.forEach(del => {
-            del.addEventListener('click', (e) => {
-                e.path[2].style.display = 'none';     
+            del.addEventListener('click', (e) => { 
+                e.path[2].remove();
             });
         });
 
@@ -67,7 +74,7 @@ var updates = document.querySelectorAll('.update');
 
             var div = e.path[2];
             document.querySelector('input').value = div.querySelector('p').innerHTML;
-            div.style.display = 'none';
+            div.remove();
 
             var valider = document.querySelector('#ajouter');
             valider.innerHTML = `Valider`;
@@ -91,24 +98,25 @@ var view = document.querySelector('#view');
 view.addEventListener('click', (e) => {
     
     var modal = document.querySelector('#modal');
+    var content = document.querySelector('#modal .content');
     var tasks = document.querySelectorAll('.task');
 
     tasks.forEach(task => {
         const div = document.createElement('div');
-        div.innerHTML =  `<div>
-                            <p>${task.value}</p>
-                            <p>A faire</p>
+        var state = document.querySelector('.taskDiv .etat p').innerHTML;
+        console.log(state);
+        div.innerHTML =  `<div class='modalTask'>
+                            <p>${task.innerHTML}</p>
+                            <p>${state}</p>
                         </div>`;
-        modal.appendChild(div);
-        console.log(div);
-
+        content.appendChild(div);
     });
 
     modal.style.display = 'block';
 
     window.addEventListener('click', (e) => {
         if(e.target == modal) {
-            modal.style.display = 'none';
+            modal.remove();
         }
     });
 
